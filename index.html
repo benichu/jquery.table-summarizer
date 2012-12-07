@@ -1,0 +1,80 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Table Summarizer</title>
+  <link rel="stylesheet" href="css/site.css">
+  <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+  <div id="container">
+    <header>
+      <h1>Table Summarizer</h1>
+    </header>
+
+    <div id="main">
+      <table>
+        <thead>
+          <tr>
+            <th>COL 1</th>
+            <th>COL 2</th>
+            <th>COL 3</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ROW 1</td>
+            <td class="duration" data-minute="30.2">30.2</td>
+            <td class="other_duration"><span data-minute="45">45</span></td>
+          </tr>
+          <tr>
+            <td>ROW 2</td>
+            <td class="duration" data-minute="0">0</td>
+            <td class="other_duration"><span data-minute="15.33">15.33</td>
+          </tr>
+          <tr>
+            <td>ROW 3</td>
+            <td class="duration" data-minute=""></td>
+            <td class="other_duration"><span data-minute="120">120</span></td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <td>ROW 1</td>
+            <td class="duration" data-minute="30">30</td>
+            <td class="other_duration"><span data-minute="45">45</span></td>
+          </tr>
+          <tr>
+            <td>ROW 2</td>
+            <td class="duration" data-minute="0">0</td>
+            <td class="other_duration"><span data-minute="15">15</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <footer>
+    </footer>
+  </div>
+
+  <script src="js/libs/jquery.js"></script>
+  <script src="js/jquery.table-summarizer.js"></script>
+  <script>
+  $( function() {
+    $( '#main' ).tableSummarizer( {
+      debug: true,
+      cssClass: ['duration', 'other_duration'],
+      onReady: function() {
+        console.log("READY");
+      }
+    } );
+  } );
+  </script>
+
+</body>
+</html>
