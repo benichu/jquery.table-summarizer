@@ -26,13 +26,6 @@ __Basic HTML__
 ```html
 <div class="summarized">
   <table>
-    <thead>
-      <tr>
-        <th>COL 1</th>
-        <th>COL 2</th>
-        <th>COL 3</th>
-      </tr>
-    </thead>
     <tbody>
       <tr>
         <td>ROW 1</td>
@@ -43,11 +36,6 @@ __Basic HTML__
         <td>ROW 2</td>
         <td class="duration" data-minute="0">0</td>
         <td class="other_duration"><span data-minute="15.33">15.33</td>
-      </tr>
-      <tr>
-        <td>ROW 3</td>
-        <td class="duration" data-minute=""></td>
-        <td class="other_duration"><span data-minute="120">120</span></td>
       </tr>
     </tbody>
     <tbody>
@@ -70,11 +58,54 @@ __Basic Initialization__
 
 ```javascript
 $(".summarized").tableSummarizer({
+  summaryCssClass: 'summary',
   cssClass: ["duration", "other_duration"],
   onReady: function(el) {
     // do whatever you want, for example, formatting your sub-totals...
   }
 });
+```
+__HTML Result__
+
+```html
+<div class="summarized">
+  <table>
+    <tbody>
+      <tr>
+        <td>ROW 1</td>
+        <td class="duration" data-minute="30.2">30.2</td>
+        <td class="other_duration"><span data-minute="45">45</span></td>
+      </tr>
+      <tr>
+        <td>ROW 2</td>
+        <td class="duration" data-minute="0">0</td>
+        <td class="other_duration"><span data-minute="15.33">15.33</td>
+      </tr>
+      <tr class="summary">
+        <td></td>
+        <td class="duration" data-minute="30.2">30.2</td>
+        <td class="other_duration"><span data-minute="60.33">60.33</td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td>ROW 1</td>
+        <td class="duration" data-minute="30">30</td>
+        <td class="other_duration"><span data-minute="45">45</span></td>
+      </tr>
+      <tr>
+        <td>ROW 2</td>
+        <td class="duration" data-minute="0">0</td>
+        <td class="other_duration"><span data-minute="15">15</td>
+      </tr>
+      <tr class="summary">
+        <td></td>
+        <td class="duration" data-minute="30">30</td>
+        <td class="other_duration"><span data-minute="60">60</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 ```
 
 - TODO: doc
