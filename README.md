@@ -1,26 +1,27 @@
-# [CoffeesScript jQuery Plugin Boilerplate](http://miniboilerplate.com) [![Build Status](https://secure.travis-ci.org/miniJs/miniBoilerplate.png?branch=master)](http://travis-ci.org/miniJs/miniBoilerplate)
+# [tableSummarizer](https://github.com/benichu/jquery.table-summarizer)
 
-jQuery Plugin Boilerplate written in CoffeeScript to help you create plugins in a clean and quick way.
+`tableSummarizer` is a jQuery Plugin written in CoffeeScript to help append or
+prepend a summary row to a `<tbody>` for each column tagged by a specified CSS class.
 
 ## Version
 
-v1.1 Stable
+v1.0.0 prototype
 
 ## Website Url
 
-http://minijs.github.com/miniBoilerplate/
+https://github.com/benichu/jquery.table-summarizer
 
 ## Bug tracker
 
-If you find a bug, please raise it the [issue here](https://github.com/miniJs/miniBoilerplate/issues) on Github! 
+If you find a bug, please raise it the [issue here](https://github.com/benichu/jquery.table-summarizer/issues) on Github!
 
-## Documenation
+## Documentation
 
-[miniboilerplate.com](http://miniboilerplate.com/)
+- TODO: doc
+- TODO: specs
 
 ## Developer
 
-Developed by Matthieu Aussaguel, [mynameismatthieu.com](http://mynameismatthieu.com)
+Developed by Benjamin Thouret, [benjamin.thouret.com](http://benjamin.thouret.com)
 
-+ [@mattaussaguel](http://twitter.com/mattaussaguel)
-+ [Github Profile](http://github.com/matthieua)
++ [Github Profile](http://github.com/benichu)
