@@ -19,7 +19,7 @@ If you find a bug, please raise it the [issue here](https://github.com/benichu/j
 
 ## Documentation
 
-download this file [jquery.table-summarizer.js](https://github.com/benichu/jquery.table-summarizer/blob/master/js/jquery.table-summarizer.js),
+download this file [jquery.table-summarizer.js](https://github.com/benichu/jquery.table-summarizer/blob/master/js/jquery.table-summarizer.min.js),
 and add it to your project.
 
 
