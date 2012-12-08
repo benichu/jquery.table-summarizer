@@ -112,23 +112,24 @@ $(".summarized").tableSummarizer({
 
 ```javascript
 debug: false
-summaryCssClass: 'summary'      # CSS class to be applied to the summary row
-showValue: true                 # Do you want to show the sub-total inside the summary <td>
-cssClass: ['duration']          # Calculate total of values contained somewhere inside elements with this CSS class
-summarizableAttr: 'data-minute' # The data attribute that contains the value to sum (ex: <td data-minute="120">)
-position: 'after'               # Show the summary row, 'before' or 'after' each tbody
-roundTo: 2                      # Round your sub-totals results
+summaryCssClass: 'summary'        # CSS class to be applied to the summary row
+summaryLabel: ''                  # Display this label in the first cell of the summary row, if empty of sub-total value
+position: 'after'                 # Show the summary row, 'before' or 'after' each tbody
+showResultValue: true             # Do you want to show the sub-total inside the summary <td>
+summarizableCss: ['duration']     # Calculate total of values contained somewhere inside elements with this CSS class
+summarizableAttr: 'data-minute'   # The data attribute that contains the value to sum (ex: <td data-minute="120">)
+roundTo: 2                        # Round your sub-totals results
 
-onReady: ->                     # Function(), called when tableSummarizer is ready
-onError: ->                     # Function(), called when tableSummarizer has not found an element to work on
+onReady: ->                       # Function(), called when tableSummarizer is ready
+onError: ->                       # Function(), called when tableSummarizer has not found an element to work on
 ```
 
 ## Developer
 
-Developed by Benjamin Thouret, [benjamin.thouret.com](http://benjamin.thouret.com)
-
-+ [Github Profile](http://github.com/benichu)
+Developed by Benjamin Thouret, [benjamin.thouret.com](http://benjamin.thouret.com),
+[Github Profile](http://github.com/benichu)
 
 Based on the [MiniBoilerplate](http://miniboilerplate.com/) template.
+
 Check [MiniBoilerplate's website](http://miniboilerplate.com/) for instructions
 about the development workflow to be used for improving this plugin.
