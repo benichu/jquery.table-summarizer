@@ -1,8 +1,8 @@
 #
-#  Title:		  jquery.table-summarizer (tableSummarizer)
-#  Homepage:	https://github.com/benichu/jquery.table-summarizer
-#  Copyright:	(c)2012: Benjamin Thouret <ben@2ret.com>
-#  License:	  MIT, https://github.com/benichu/jquery.table-summarizer/LICENSE-MIT
+#  Title:     jquery.table-summarizer (tableSummarizer)
+#  Homepage:  https://github.com/benichu/jquery.table-summarizer
+#  Copyright: (c)2012: Benjamin Thouret <ben@2ret.com>
+#  License:   MIT, https://github.com/benichu/jquery.table-summarizer/LICENSE-MIT
 #
 
 jQuery ->
