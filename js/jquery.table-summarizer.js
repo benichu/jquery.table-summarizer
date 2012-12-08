@@ -38,7 +38,7 @@ jQuery(function() {
       });
     };
     sumColumns = function(tbody) {
-      var item, settings, sumCell, sumColumn, summarizableCss, _cssScope, _i, _len, _results;
+      var firstTd, item, settings, sumCell, sumColumn, summarizableCss, _cssScope, _i, _len, _results;
       summarizableCss = _this.settings.summarizableCss;
       log("Summarize: " + summarizableCss);
       _results = [];
@@ -62,7 +62,18 @@ jQuery(function() {
         if (settings.showResultValue) {
           sumCell.html(sumColumn);
         }
-        _results.push(sumCell.attr(settings.summarizableAttr, sumColumn));
+        sumCell.attr(settings.summarizableAttr, sumColumn);
+        log("Summary label: " + settings.summaryLabel);
+        if (!!settings.summaryLabel) {
+          firstTd = tbody.find("tr." + settings.summaryCssClass + " td:first");
+          if (!firstTd.html()) {
+            _results.push(firstTd.html(settings.summaryLabel));
+          } else {
+            _results.push(void 0);
+          }
+        } else {
+          _results.push(void 0);
+        }
       }
       return _results;
     };

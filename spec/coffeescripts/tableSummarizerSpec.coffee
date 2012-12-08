@@ -13,16 +13,26 @@ describe 'tableSummarizer', ->
       @plugin = new $.tableSummarizer( @$element, options )
 
     it 'should append a row to the first tbody', ->
-      expect(@$element.find("tbody:first tr").length).toEqual 4
+      expect(@$element.find("tbody#case1 tr").length).toEqual 4
 
     it 'should append a row to the last tbody', ->
-      expect(@$element.find("tbody:last tr").length).toEqual 3
+      expect(@$element.find("tbody#case3 tr").length).toEqual 3
 
     it 'should calculate the sum of data-values property on the `cssClass` element', ->
-      expect(@$element.find("tbody:first tr.summary td.duration").html()).toBeCloseTo 30.20
+      expect(@$element.find("tbody#case1 tr.summary td.duration").html()).toBeCloseTo 30.20
 
     it 'should calculate the sum of data-values property inside the `cssClass` element', ->
-      expect(@$element.find("tbody:first tr.summary td.other_duration").html()).toBeCloseTo 180.33
+      expect(@$element.find("tbody#case1 tr.summary td.other_duration").html()).toBeCloseTo 180.33
+
+  describe 'plugin display customization', ->
+    beforeEach ->
+      @plugin = new $.tableSummarizer( @$element, {summaryLabel: 'Sub-Total'} )
+
+    it 'should add a summary label to each <tbody> summary first empty cell', ->
+      expect(@$element.find("tbody#case1 tr.summary td:first").html()).toEqual "Sub-Total"
+
+    it 'should not add a summary label to each <tbody> summary first not empty cell', ->
+      expect(@$element.find("tbody#case2 tr.summary td:first").html()).toNotEqual "Sub-Total"
 
   describe 'plugin behavior', ->
     it 'should be available on the jQuery object', ->

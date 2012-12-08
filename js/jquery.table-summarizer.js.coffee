@@ -75,6 +75,14 @@ jQuery ->
         log "#{item}: #{sumColumn}"
         sumCell.html(sumColumn) if settings.showResultValue
         sumCell.attr(settings.summarizableAttr, sumColumn)
+        # Should we display a summary label?
+        log "Summary label: #{settings.summaryLabel}"
+        if not not settings.summaryLabel
+          firstTd = tbody.find("tr.#{settings.summaryCssClass} td:first")
+          # If the first <td> is empty
+          unless not not firstTd.html()
+            firstTd.html(settings.summaryLabel)
+
 
     # Simple logger.
     log = (msg) =>
