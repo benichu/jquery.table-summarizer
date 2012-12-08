@@ -34,17 +34,7 @@ module.exports = function(grunt) {
         },
         watch : {
             files: ['<config:coffee.helpers.src>', '<config:coffee.specs.src>', '<config:coffee.plugin.src>'],
-            tasks: 'coffee growl:coffee jasmine growl:jasmine'
-        },
-        growl : {
-            coffee : {
-                title   : 'CoffeeScript',
-                message : 'Compiled successfully'
-            },
-            jasmine : {
-                title   : 'Jasmine',
-                message : 'Tests passed successfully'
-            }
+            tasks: 'coffee jasmine'
         },
         min : {
             dist : {
@@ -55,12 +45,11 @@ module.exports = function(grunt) {
     });
 
     // Lib tasks.
-    grunt.loadNpmTasks('grunt-growl');
     grunt.loadNpmTasks('grunt-jasmine-runner');
     grunt.loadNpmTasks('grunt-coffee');
 
     // Default task.
-    grunt.registerTask('default', 'coffee growl:coffee jasmine growl:jasmine');
+    grunt.registerTask('default', 'coffee jasmine');
 
     // Travis CI task.
     grunt.registerTask('travis', 'coffee jasmine');

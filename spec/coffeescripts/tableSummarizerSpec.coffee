@@ -1,6 +1,6 @@
 describe 'tableSummarizer', ->
   options =
-    cssClass: ['duration', 'other_duration']
+    summarizableCss: ['duration', 'other_duration']
     showValue: true
     summaryCssClass: 'summary'
 

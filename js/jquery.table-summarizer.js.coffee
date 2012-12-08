@@ -51,15 +51,16 @@ jQuery ->
         $(this).find(settings.summarizableAttr).attr(settings.summarizableAttr,"")
 
     sumColumns = (tbody) =>
-      cssClass = @settings.cssClass
+      summarizableCss = @settings.summarizableCss
 
-      log "Summarize: #{cssClass}"
+      log "Summarize: #{summarizableCss}"
 
-      for item in cssClass
+      for item in summarizableCss
         sumColumn = 0
         settings = @settings
-        _cssScope = tbody.find("tr:not(.#{@settings.summaryCssClass})")
-        _cssScope.find(".#{item}[#{@settings.summarizableAttr}], .#{item} [#{@settings.summarizableAttr}]").each ->
+
+        _cssScope = tbody.find("tr:not(.#{settings.summaryCssClass})")
+        _cssScope.find(".#{item}[#{settings.summarizableAttr}], .#{item} [#{settings.summarizableAttr}]").each ->
           if $(this).attr(settings.summarizableAttr)
             val = parseFloat($(this).attr(settings.summarizableAttr))
           else
@@ -67,13 +68,13 @@ jQuery ->
           sumColumn += val
 
         # Apply some rounding to avoid precision issues with the floats
-        sumColumn = sumColumn.toFixed(@settings.roundTo)
+        sumColumn = sumColumn.toFixed(settings.roundTo)
 
-        # display the value
-        sumCell = tbody.find("tr.#{@settings.summaryCssClass} td.#{item}")
+        # Display the value
+        sumCell = tbody.find("tr.#{settings.summaryCssClass} td.#{item}")
         log "#{item}: #{sumColumn}"
-        sumCell.html(sumColumn) if @settings.showValue
-        sumCell.attr(@settings.summarizableAttr, sumColumn)
+        sumCell.html(sumColumn) if settings.showResultValue
+        sumCell.attr(settings.summarizableAttr, sumColumn)
 
     # Simple logger.
     log = (msg) =>
@@ -115,15 +116,16 @@ jQuery ->
   # default plugin settings
   $.tableSummarizer::defaults =
       debug: false
-      summaryCssClass: 'summary'      # CSS class to be applied to the summary row
-      showValue: true                 # Do you want to show the sub-total inside the summary <td>
-      cssClass: ['duration']          # Calculate total of values contained somewhere inside elements with this CSS class
-      summarizableAttr: 'data-minute' # The data attribute that contains the value to sum (ex: <td data-minute="120">)
-      position: 'after'               # Show the summary row, 'before' or 'after' each tbody
-      roundTo: 2                      # Round your sub-totals results
+      summaryCssClass: 'summary'        # CSS class to be applied to the summary row
+      summaryLabel: ''                  # Display this label in the first cell of the summary row, if empty of sub-total value
+      position: 'after'                 # Show the summary row, 'before' or 'after' each tbody
+      showResultValue: true             # Do you want to show the sub-total inside the summary <td>
+      summarizableCss: ['duration']     # Calculate total of values contained somewhere inside elements with this CSS class
+      summarizableAttr: 'data-minute'   # The data attribute that contains the value to sum (ex: <td data-minute="120">)
+      roundTo: 2                        # Round your sub-totals results
 
-      onReady: ->                     # Function(), called when tableSummarizer is ready
-      onError: ->                     # Function(), called when tableSummarizer has not found an element to work on
+      onReady: ->                       # Function(), called when tableSummarizer is ready
+      onError: ->                       # Function(), called when tableSummarizer has not found an element to work on
 
   $.fn.tableSummarizer = ( options ) ->
     this.each ->

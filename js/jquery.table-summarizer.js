@@ -38,16 +38,16 @@ jQuery(function() {
       });
     };
     sumColumns = function(tbody) {
-      var cssClass, item, settings, sumCell, sumColumn, _cssScope, _i, _len, _results;
-      cssClass = _this.settings.cssClass;
-      log("Summarize: " + cssClass);
+      var item, settings, sumCell, sumColumn, summarizableCss, _cssScope, _i, _len, _results;
+      summarizableCss = _this.settings.summarizableCss;
+      log("Summarize: " + summarizableCss);
       _results = [];
-      for (_i = 0, _len = cssClass.length; _i < _len; _i++) {
-        item = cssClass[_i];
+      for (_i = 0, _len = summarizableCss.length; _i < _len; _i++) {
+        item = summarizableCss[_i];
         sumColumn = 0;
         settings = _this.settings;
-        _cssScope = tbody.find("tr:not(." + _this.settings.summaryCssClass + ")");
-        _cssScope.find("." + item + "[" + _this.settings.summarizableAttr + "], ." + item + " [" + _this.settings.summarizableAttr + "]").each(function() {
+        _cssScope = tbody.find("tr:not(." + settings.summaryCssClass + ")");
+        _cssScope.find("." + item + "[" + settings.summarizableAttr + "], ." + item + " [" + settings.summarizableAttr + "]").each(function() {
           var val;
           if ($(this).attr(settings.summarizableAttr)) {
             val = parseFloat($(this).attr(settings.summarizableAttr));
@@ -56,13 +56,13 @@ jQuery(function() {
           }
           return sumColumn += val;
         });
-        sumColumn = sumColumn.toFixed(_this.settings.roundTo);
-        sumCell = tbody.find("tr." + _this.settings.summaryCssClass + " td." + item);
+        sumColumn = sumColumn.toFixed(settings.roundTo);
+        sumCell = tbody.find("tr." + settings.summaryCssClass + " td." + item);
         log("" + item + ": " + sumColumn);
-        if (_this.settings.showValue) {
+        if (settings.showResultValue) {
           sumCell.html(sumColumn);
         }
-        _results.push(sumCell.attr(_this.settings.summarizableAttr, sumColumn));
+        _results.push(sumCell.attr(settings.summarizableAttr, sumColumn));
       }
       return _results;
     };
@@ -94,10 +94,11 @@ jQuery(function() {
   $.tableSummarizer.prototype.defaults = {
     debug: false,
     summaryCssClass: 'summary',
-    showValue: true,
-    cssClass: ['duration'],
-    summarizableAttr: 'data-minute',
+    summaryLabel: '',
     position: 'after',
+    showResultValue: true,
+    summarizableCss: ['duration'],
+    summarizableAttr: 'data-minute',
     roundTo: 2,
     onReady: function() {},
     onError: function() {}
