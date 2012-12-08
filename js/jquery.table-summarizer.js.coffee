@@ -116,11 +116,11 @@ jQuery ->
   $.tableSummarizer::defaults =
       debug: false
       summaryCssClass: 'summary'      # CSS class to be applied to the summary row
-      showValue: true
-      cssClass: ['duration']          # sum values contained somewhere inside elements with this CSS class
-      summarizableAttr: 'data-minute' # sum values contained somewhere inside elements with this CSS class
-      position: 'after'               # summary row position: 'before' or 'after'
-      roundTo: 2
+      showValue: true                 # Do you want to show the sub-total inside the summary <td>
+      cssClass: ['duration']          # Calculate total of values contained somewhere inside elements with this CSS class
+      summarizableAttr: 'data-minute' # The data attribute that contains the value to sum (ex: <td data-minute="120">)
+      position: 'after'               # Show the summary row, 'before' or 'after' each tbody
+      roundTo: 2                      # Round your sub-totals results
 
       onReady: ->                     # Function(), called when tableSummarizer is ready
       onError: ->                     # Function(), called when tableSummarizer has not found an element to work on
