@@ -3,7 +3,10 @@
 TODO: write a better description!
 
 `tableSummarizer` is a jQuery Plugin written in CoffeeScript to help append or
-prepend a summary row to a `<tbody>` for each `<td>` tagged by a specified CSS class.
+prepend a summary row to each `<tbody>` inside the HTML element you apply it to.
+
+You can pass many options explained at the bottom of this [README](#options), the best way to understand
+what this plugin does is to check the example in the [documentation](#documentation).
 
 ## Website Url
 
@@ -19,7 +22,7 @@ download this file [jquery.table-summarizer.min.js](https://github.com/benichu/j
 and add it to your project.
 
 
-__Basic HTML__
+### Basic HTML
 
 ```html
 <div class="summarized">
@@ -52,7 +55,7 @@ __Basic HTML__
 </div>
 ```
 
-__Basic Initialization__
+### Basic Initialization
 
 ```javascript
 $(".summarized").tableSummarizer({
@@ -63,7 +66,8 @@ $(".summarized").tableSummarizer({
   }
 });
 ```
-__HTML Result__
+
+### HTML Result
 
 ```html
 <div class="summarized">
@@ -106,7 +110,20 @@ __HTML Result__
 </div>
 ```
 
-TODO: doc
+### Options
+
+```javascript
+debug: false
+summaryCssClass: 'summary'      # CSS class to be applied to the summary row
+showValue: true                 # Do you want to show the sub-total inside the summary <td>
+cssClass: ['duration']          # Calculate total of values contained somewhere inside elements with this CSS class
+summarizableAttr: 'data-minute' # The data attribute that contains the value to sum (ex: <td data-minute="120">)
+position: 'after'               # Show the summary row, 'before' or 'after' each tbody
+roundTo: 2                      # Round your sub-totals results
+
+onReady: ->                     # Function(), called when tableSummarizer is ready
+onError: ->                     # Function(), called when tableSummarizer has not found an element to work on
+```
 
 ## Developer
 
