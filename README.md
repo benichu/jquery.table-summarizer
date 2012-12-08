@@ -1,7 +1,5 @@
 # [tableSummarizer](https://github.com/benichu/jquery.table-summarizer) [![Build Status](https://secure.travis-ci.org/benichu/jquery.table-summarizer.png?branch=master)](https://travis-ci.org/benichu/jquery.table-summarizer)
 
-TODO: write a better description!
-
 `tableSummarizer` is a jQuery Plugin written in CoffeeScript to help append or
 prepend a summary row to each `<tbody>` inside the HTML element you apply it to.
 
