@@ -128,3 +128,7 @@ onError: ->                     # Function(), called when tableSummarizer has no
 Developed by Benjamin Thouret, [benjamin.thouret.com](http://benjamin.thouret.com)
 
 + [Github Profile](http://github.com/benichu)
+
+Based on the [MiniBoilerplate](http://miniboilerplate.com/) template.
+Check [MiniBoilerplate's website](http://miniboilerplate.com/) for instructions
+about the development workflow to be used for improving this plugin.
