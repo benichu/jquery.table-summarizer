@@ -1,8 +1,8 @@
 #
-# Name    : jquery.table-summarizer
-# Author  : Ben Thouret, http://benjamin.thouret.com
-# Version : 1.0
-# Repo    : <repo url>
+#  Title:		  jquery.table-summarizer (tableSummarizer)
+#  Homepage:	https://github.com/benichu/jquery.table-summarizer
+#  Copyright:	(c)2012: Benjamin Thouret <ben@2ret.com>
+#  License:	  MIT, https://github.com/benichu/jquery.table-summarizer/LICENSE-MIT
 #
 
 jQuery ->
