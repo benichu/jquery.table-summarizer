@@ -83,7 +83,7 @@ $(".summarized").tableSummarizer({
       </tr>
       <tr class="summary">
         <td></td>
-        <td class="duration" data-minute="30.2">30.2</td>
+        <td class="duration" data-minute="30.2">30.20</td>
         <td class="other_duration"><span data-minute="60.33">60.33</td>
       </tr>
     </tbody>
@@ -100,8 +100,8 @@ $(".summarized").tableSummarizer({
       </tr>
       <tr class="summary">
         <td></td>
-        <td class="duration" data-minute="30">30</td>
-        <td class="other_duration"><span data-minute="60">60</td>
+        <td class="duration" data-minute="30">30.00</td>
+        <td class="other_duration"><span data-minute="60">60.00</td>
       </tr>
     </tbody>
   </table>
