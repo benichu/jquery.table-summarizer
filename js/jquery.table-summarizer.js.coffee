@@ -33,7 +33,7 @@ jQuery ->
     #
     # private methods
     #
-    appendRow = (tbody) =>
+    addRow = (tbody) =>
       log "Add summary row"
 
       @$row = tbody.find("tr:last").clone(true)
@@ -41,7 +41,7 @@ jQuery ->
       if @settings.position is 'after'
         @$row.appendTo tbody
       else
-        @$row.appendTo tbody
+        @$row.prependTo tbody
 
       @$row.addClass @settings.summaryCssClass
       # clear the TD's content
@@ -59,12 +59,15 @@ jQuery ->
         sumColumn = 0
         settings = @settings
         _cssScope = tbody.find("tr:not(.#{@settings.summaryCssClass})")
-        _cssScope.find("[#{@settings.summarizableAttr}].#{item}, .#{item} [#{@settings.summarizableAttr}]").each ->
+        _cssScope.find(".#{item}[#{@settings.summarizableAttr}], .#{item} [#{@settings.summarizableAttr}]").each ->
           if $(this).attr(settings.summarizableAttr)
             val = parseFloat($(this).attr(settings.summarizableAttr))
           else
             val = 0
           sumColumn += val
+
+        # Apply some rounding to avoid precision issues with the floats
+        sumColumn = sumColumn.toFixed(@settings.roundTo)
 
         # display the value
         sumCell = tbody.find("tr.#{@settings.summaryCssClass} td.#{item}")
@@ -90,7 +93,7 @@ jQuery ->
 
         @$tbodies.each ->
           # append or prepend a row that will contain the sum results
-          appendRow($(this))
+          addRow($(this))
           # find the values to add and display them in the appropriate summary row
           sumColumns($(this))
 
@@ -117,6 +120,7 @@ jQuery ->
       cssClass: ['duration']          # sum values contained somewhere inside elements with this CSS class
       summarizableAttr: 'data-minute' # sum values contained somewhere inside elements with this CSS class
       position: 'after'               # summary row position: 'before' or 'after'
+      roundTo: 2
 
       onReady: ->                     # Function(), called when tableSummarizer is ready
       onError: ->                     # Function(), called when tableSummarizer has not found an element to work on

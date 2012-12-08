@@ -1,7 +1,7 @@
 
 jQuery(function() {
   $.tableSummarizer = function(element, options) {
-    var appendRow, log, state, sumColumns,
+    var addRow, log, state, sumColumns,
       _this = this;
     state = 'waiting';
     this.settings = {};
@@ -21,14 +21,14 @@ jQuery(function() {
       }
       return this.settings[name].apply(this, args);
     };
-    appendRow = function(tbody) {
+    addRow = function(tbody) {
       var settings;
       log("Add summary row");
       _this.$row = tbody.find("tr:last").clone(true);
       if (_this.settings.position === 'after') {
         _this.$row.appendTo(tbody);
       } else {
-        _this.$row.appendTo(tbody);
+        _this.$row.prependTo(tbody);
       }
       _this.$row.addClass(_this.settings.summaryCssClass);
       settings = _this.settings;
@@ -47,7 +47,7 @@ jQuery(function() {
         sumColumn = 0;
         settings = _this.settings;
         _cssScope = tbody.find("tr:not(." + _this.settings.summaryCssClass + ")");
-        _cssScope.find("[" + _this.settings.summarizableAttr + "]." + item + ", ." + item + " [" + _this.settings.summarizableAttr + "]").each(function() {
+        _cssScope.find("." + item + "[" + _this.settings.summarizableAttr + "], ." + item + " [" + _this.settings.summarizableAttr + "]").each(function() {
           var val;
           if ($(this).attr(settings.summarizableAttr)) {
             val = parseFloat($(this).attr(settings.summarizableAttr));
@@ -56,6 +56,7 @@ jQuery(function() {
           }
           return sumColumn += val;
         });
+        sumColumn = sumColumn.toFixed(_this.settings.roundTo);
         sumCell = tbody.find("tr." + _this.settings.summaryCssClass + " td." + item);
         log("" + item + ": " + sumColumn);
         if (_this.settings.showValue) {
@@ -77,7 +78,7 @@ jQuery(function() {
         log("Element is defined.");
         this.$tbodies = this.$element.find("tbody");
         this.$tbodies.each(function() {
-          appendRow($(this));
+          addRow($(this));
           return sumColumns($(this));
         });
         this.setState('ready');
@@ -97,6 +98,7 @@ jQuery(function() {
     cssClass: ['duration'],
     summarizableAttr: 'data-minute',
     position: 'after',
+    roundTo: 2,
     onReady: function() {},
     onError: function() {}
   };
